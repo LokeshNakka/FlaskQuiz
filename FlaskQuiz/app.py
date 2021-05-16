@@ -35,7 +35,8 @@ def quiz():
         result = 0
         total = 0
         for question in questions:
-            if request.form[question.get('id')] == question.get('correct'):
+            qId = question.get('id')
+            if qId in request.form and request.form[qId] == question.get('correct'):
                 result += 1
             total += 1
         return render_template('results.html', total=total, result=result)
